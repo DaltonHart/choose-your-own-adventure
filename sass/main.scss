@@ -1,0 +1,177 @@
+@function multiple-box-shadow($n) {
+  $value: "#{random(2000)}px #{random(2000)}px #FFF";
+  @for $i from 2 through $n {
+    $value: "#{$value} , #{random(2000)}px #{random(2000)}px #FFF";
+  }
+
+  @return unquote($value);
+}
+
+$shadows-sm: multiple-box-shadow(700);
+$shadows-md: multiple-box-shadow(200);
+$shadows-lg: multiple-box-shadow(100);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 30px;
+  height: 100vh;
+  overflow: hidden;
+  background-image: radial-gradient(
+    ellipse at bottom,
+    #1b2735 0%,
+    #090a0f 100%
+  );
+  // background-color: black;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: white;
+  position: relative;
+  z-index: 2;
+}
+
+ul {
+  list-style: none;
+}
+
+#choices {
+  position: absolute;
+  bottom: 50px;
+  left: 0px;
+  right: 0px;
+  text-align: center;
+}
+
+.choice {
+  background-color: #1f1f1ff1;
+  padding: 1em;
+  color: white;
+  width: 100%;
+  margin: 15px 0;
+  cursor: pointer;
+  border: 1px solid #3f3f3ff1;
+  font-size: 1.3em;
+}
+
+.choice:hover {
+  background-color: #3f3f3ff1;
+}
+
+#stars-sm {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  animation: animate-star 50s linear infinite;
+  box-shadow: $shadows-sm;
+}
+
+#stars-sm::after {
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: $shadows-sm;
+}
+
+#stars-md {
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  animation: animate-star 100s linear infinite;
+  box-shadow: $shadows-md;
+}
+
+#stars-md::after {
+  content: " ";
+  position: absolute;
+  top: 2000px;
+  width: 2px;
+  height: 2px;
+  background: transparent;
+  box-shadow: $shadows-md;
+}
+
+#stars-lg {
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  animation: animate-star 150s linear infinite;
+  box-shadow: $shadows-lg;
+}
+
+#stars-lg::after {
+  content: "";
+  position: absolute;
+  top: 2000px;
+  width: 3px;
+  height: 3px;
+  background: transparent;
+  box-shadow: $shadows-lg;
+}
+
+#prompt {
+  text-align: justify;
+  position: absolute;
+  top: 70px;
+  padding: 1em;
+  font-size: 1.2em;
+  background-color: #1f1f1ff1;
+  border: 1px solid #3f3f3faa;
+}
+
+#earth {
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background-color: white;
+  border-radius: 50%;
+  background: url(../images/earth.png);
+  background-position: center;
+  animation: planet-rotate 300s linear infinite;
+}
+
+#mars {
+  position: absolute;
+  bottom: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background-color: white;
+  border-radius: 50%;
+  background: url(../images/mars.png);
+  background-position: center;
+  animation: planet-rotate 300s linear infinite;
+}
+
+@keyframes planet-rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-star {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(-2000px);
+  }
+}
