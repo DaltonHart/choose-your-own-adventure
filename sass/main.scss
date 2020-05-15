@@ -157,6 +157,61 @@ ul {
   animation: planet-rotate 300s linear infinite;
 }
 
+#astroidfield {
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  background-color: white;
+  background: url(../images/astroid.png);
+  background-position: center;
+  animation: planet-rotate 300s linear infinite;
+}
+
+#astroidfield::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  bottom: -400px;
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  background: url(../images/astroid.png);
+  background-position: center;
+  animation: planet-rotate 100s linear infinite;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#astroidfield::before {
+  content: "";
+  position: absolute;
+  right: -100px;
+  bottom: -50px;
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  background: url(../images/astroid.png);
+  background-position: center;
+  animation: planet-rotate 25s linear infinite;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#driftingship {
+  position: absolute;
+  bottom: 25%;
+  left: 10%;
+  width: 400px;
+  height: 400px;
+  background-color: white;
+  background: url(../images/driftingship.png);
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 @keyframes planet-rotate {
   from {
     transform: rotate(0);
