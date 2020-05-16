@@ -6,7 +6,7 @@ class Prompt {
   }
 
   static generateChoices(choices) {
-    return choices.map((choice) => {
+    return choices.map(function (choice) {
       return new Choice(choice.text, Choice.generatePrompt(choice.prompt));
     });
   }
@@ -19,7 +19,7 @@ class Prompt {
 
     document.querySelector("#prompt").textContent = this.text;
     document.querySelector("#choices").innerHTML = "";
-    this.choices.forEach((choice) => {
+    this.choices.forEach(function (choice) {
       choice.displayChoice();
     });
   }
@@ -29,6 +29,8 @@ class Choice {
   constructor(text, promptOutcome) {
     this.text = text;
     this.promptOutcome = promptOutcome;
+
+    this.clicked = this.clicked.bind(this);
   }
 
   static generatePrompt(prompt) {
@@ -48,16 +50,7 @@ class Choice {
     li.addEventListener("click", this.clicked);
   }
 
-  clicked = () => {
+  clicked() {
     this.promptOutcome.displayPrompt();
-  };
-}
-
-function buildGame(adventure) {
-  const start = new Prompt(
-    adventure.start.text,
-    adventure.start.location,
-    Prompt.generateChoices(adventure.start.choices)
-  );
-  return start;
+  }
 }

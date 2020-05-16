@@ -86,6 +86,15 @@ const adventure = {
   },
 };
 
-const start = buildGame(adventure);
+const start = new Prompt(
+  adventure.start.text,
+  adventure.start.location,
+  Prompt.generateChoices(adventure.start.choices)
+);
 
 start.displayPrompt();
+
+document.documentElement.style.setProperty(
+  "--vh",
+  `${window.innerHeight / 100}px`
+);
