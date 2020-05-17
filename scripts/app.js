@@ -94,7 +94,15 @@ const start = new Prompt(
 
 start.displayPrompt();
 
-document.documentElement.style.setProperty(
-  "--vh",
-  `${window.innerHeight / 100}px`
-);
+function setDocHeight() {
+  document.documentElement.style.setProperty(
+    "--vh",
+    `${window.innerHeight / 100}px`
+  );
+}
+
+addEventListener("resize", setDocHeight);
+
+setDocHeight();
+
+screen.orientation.lock("portrait-primary");
