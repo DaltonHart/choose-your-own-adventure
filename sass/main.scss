@@ -11,6 +11,7 @@
   @return calc(var(--vh, 1vh) * #{$quantity});
 }
 
+$shadows-xsm: multiple-box-shadow(900);
 $shadows-sm: multiple-box-shadow(700);
 $shadows-md: multiple-box-shadow(200);
 $shadows-lg: multiple-box-shadow(100);
@@ -42,20 +43,6 @@ main {
   position: relative;
   z-index: 2;
   background-color: transparent;
-  background-image: radial-gradient(
-      white,
-      rgba(255, 255, 255, 0.2) 1px,
-      transparent 5px
-    ),
-    radial-gradient(white, rgba(255, 255, 255, 0.15) 1px, transparent 2px),
-    radial-gradient(white, rgba(255, 255, 255, 0.1) 2px, transparent 3px);
-  // radial-gradient(
-  //   rgba(255, 255, 255, 0.4),
-  //   rgba(255, 255, 255, 0.1) 2px,
-  //   transparent 5px
-  // );
-  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
-  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
 }
 
 ul {
@@ -83,6 +70,14 @@ ul {
 
 .choice:hover {
   background-color: #3f3f3ff1;
+}
+
+#stars-stationary {
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  box-shadow: $shadows-xsm;
+  transform: translateY(-1000px);
 }
 
 #stars-sm {
@@ -242,7 +237,7 @@ ul {
 
 @keyframes animate-star {
   from {
-    transform: translateY(0px);
+    transform: translateY(-1000px);
   }
 
   to {
