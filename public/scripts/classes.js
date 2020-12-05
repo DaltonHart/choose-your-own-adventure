@@ -11,6 +11,8 @@ class Prompt {
     });
   }
 
+  // time for more comments
+  
   displayPrompt() {
     const location = document.createElement("div");
     location.id = this.location.toLowerCase().replace(/\s/g, "");
